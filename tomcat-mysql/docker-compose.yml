@@ -1,0 +1,19 @@
+version: '3'
+services:
+  sshop:
+    build: .
+    ports:
+      - "80:8080"
+    links:
+      - mysql
+
+  mysql:
+    build: ./mysql
+    expose:
+      - "3306"
+    environment:
+      - MYSQL_ROOT_PASSWORD=123456
+      - MYSQL_DATABASE=web_test
+      - MYSQL_USER=root
+      - MYSQL_PASSWORD=123456
+
